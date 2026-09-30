@@ -1,0 +1,42 @@
+<div class="row">
+  <h1>KMI skaičiuoklė</h1>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="card mt-3">
+      <div class="card-header">Įveskite duomenis</div>
+      <div class="card-body">
+        <div class="mb-3">
+          <label class="form-label">Svoris (kg)</label>
+          <input type="number" class="form-control" required
+                 #weightVal="ngModel"
+                 [min]="AppConstants.MIN_WEIGHT"
+                 [max]="AppConstants.MAX_WEIGHT"
+                 [(ngModel)]="weight">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Ūgis (cm)</label>
+          <input type="number" class="form-control" required
+                 #heightVal="ngModel"
+                 [min]="AppConstants.MIN_HEIGHT"
+                 [max]="AppConstants.MAX_HEIGHT"
+                 [(ngModel)]="height">
+        </div>
+        <button class="btn btn-success"
+                [disabled]="weightVal.errors || heightVal.errors"
+                (click)="calcBmi()">
+          Skaičiuoti
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card mt-3">
+      <div class="card-header">KMI</div>
+      <div class="card-body">
+        <div class="card-title"><b>{{ resultText }}</b></div>
+        <div class="alert {{ alertType }}">{{ alertText }}</div>
+      </div>
+    </div>
+  </div>
+</div>
